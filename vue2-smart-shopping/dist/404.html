@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Single Page App</title>
+    <script>
+      // 这是一个针对 GitHub Pages 的 SPA 重定向脚本
+      // 当访问的路径在服务器上不存在时，这个页面会被返回，
+      // 然后脚本会立即将浏览器重定向到根路径，并附带上原始路径，
+      // 这样 index.html 就能正确加载，并由前端路由处理后续的展示。
+      
+      // 获取当前页面的完整路径（包括子目录）
+      const path = window.location.pathname;
+      
+      // 将路径编码后拼接到重定向 URL 中，作为查询参数传给 index.html
+      // 注意：这里我们假设站点根目录就是 GitHub Pages 的根路径。
+      // 如果你的项目部署在子目录下（比如 /my-projects/project-a/），
+      // 需要将重定向目标调整为对应的子目录路径。
+      
+      // 下面的脚本会自动检测当前部署的路径前缀，一般不需要手动修改。
+      const base = document.querySelector('base')?.getAttribute('href') || '/';
+      window.location.replace(base + '?/?' + encodeURIComponent(path));
+    </script>
+  </head>
+  <body>
+    Redirecting...
+  </body>
+</html>
